@@ -9,14 +9,14 @@ import (
 func Mark(filename string, id int, status string) {
 	all_tasks, rerr := ReadTasks(filename)
 	if rerr != nil {
-		println("Ошибка: ", rerr)
+		println("Error: ", rerr)
 	}
 
 	user_id := syscall.Getuid()
 	temp_index := -1
 
 	if (cap(all_tasks) == 0) {
-		fmt.Println("В данный момент, у вас нет задач")
+		fmt.Println("You don't have any tasks!")
 		return 
 	}
 	for index, value := range all_tasks {
@@ -28,10 +28,10 @@ func Mark(filename string, id int, status string) {
 		}
 	}
 	if temp_index == -1 {
-		fmt.Println("Нет задач с таким ID!")
+		fmt.Println("There is no tasks with this ID!")
 		return 
 	}
 
 	WriteTasks(filename, all_tasks)
-	fmt.Println("Задача успешно помечена!")
+	fmt.Println("Task successfully marked!")
 }

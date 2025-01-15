@@ -9,7 +9,7 @@ import (
 func Add(filename, desc string) {
 	tasks, err := ReadTasks(filename)
 	if err != nil {
-		fmt.Println("Ошибка: ", err)
+		fmt.Println("Error: ", err)
 		return
 	}
 	var last_id int
@@ -29,5 +29,5 @@ func Add(filename, desc string) {
 	}
 	tasks = append(tasks, new_task)
 	WriteTasks(filename, tasks)
-	fmt.Println("Задача успешно добавлена с ID: ", last_id)
+	fmt.Println("Task added with ID: ", last_id)
 }

@@ -8,12 +8,12 @@ import (
 	"github.com/izya4ka/notes-cli/cmd"
 )
 
-const filename = "tasks.json"
+const filename = "/etc/tasks.json"
 
 func main() {
     fmt.Print("notes-cli 1.0\n\n")
     if len(os.Args) == 1 {
-        fmt.Println("Ошибка! Не представленно ни одного аргумента!")
+        fmt.Println("Error! No arguments!")
         cmd.Help(os.Args[0])
         os.Exit(1)
     }
@@ -23,7 +23,7 @@ func main() {
         cmd.Help(os.Args[0])
     case "add":
         if (len(os.Args) < 3) {
-            fmt.Println(`Недостаточно аргументов к команде "add"!`)
+            fmt.Println(`Not enough arguments for "add" command!`)
             cmd.Help(os.Args[0])
             os.Exit(1)
         }
@@ -33,57 +33,57 @@ func main() {
             cmd.List(filename, "all")
         } else {
             if (os.Args[2] != "done" && os.Args[2] != "todo" && os.Args[2] != "in-progress") {
-                fmt.Println("Доступно только три типа статуса! См. помощь")
+                fmt.Println("Here is only three types of statys! Type help")
                 os.Exit(1)
             } 
             cmd.List(filename, os.Args[2])
         }
     case "delete":
         if (len(os.Args) < 3) {
-            fmt.Println(`Недостаточно аргументов к команде "delete"!`)
+            fmt.Println(`Not enough arguments for "delete" command!`)
             cmd.Help(os.Args[0])
             os.Exit(1)
         }
         id, cerr := strconv.Atoi(os.Args[2])
         if cerr != nil {
-            fmt.Println(`Аргументом к команде "delete" должно быть число!`)
+            fmt.Println(`Argument for "delete" must be a number!`)
             cmd.Help(os.Args[0])
             os.Exit(1)
         }
         cmd.Delete(filename, id)
     case "update":
         if (len(os.Args) < 4) {
-            fmt.Println(`Недостаточно аргументов к команде "delete"!`)
+            fmt.Println(`Not enough arguments for "update" command!`)
             cmd.Help(os.Args[0])
             os.Exit(1)
         }
         id, cerr := strconv.Atoi(os.Args[2])
         if cerr != nil {
-            fmt.Println(`Аргументом к команде "update" должно быть число!`)
+            fmt.Println(`Argument for "update" must be a number!`)
             cmd.Help(os.Args[0])
             os.Exit(1)
         }
         cmd.Update(filename, id, os.Args[3])
     case "mark":
         if (len(os.Args) < 4) {
-            fmt.Println(`Недостаточно аргументов к команде "mark"!`)
+            fmt.Println(`Not enough arguments for "mark" command!`)
             cmd.Help(os.Args[0])
             os.Exit(1)
         }
         id, cerr := strconv.Atoi(os.Args[2])
         if cerr != nil {
-            fmt.Println(`Аргументом к команде "update" должно быть число!`)
+            fmt.Println(`Argument for "mark" must be a number!`)
             cmd.Help(os.Args[0])
             os.Exit(1)
         }
         if (os.Args[3] != "done" && os.Args[3] != "todo" && os.Args[3] != "in-progress") {
-            fmt.Println("Доступно только три типа статуса! См. помощь")
+            fmt.Println("Here is only three types of statuses! Type help")
             os.Exit(1)
         } 
         cmd.Mark(filename, id, os.Args[3])
 
     default:
-        fmt.Println("Ошибка! Такой команды нет")
+        fmt.Println("Error! Here is no this command")
         cmd.Help(os.Args[0])
         os.Exit(1)
     }
