@@ -15,6 +15,8 @@ Roadmap Project Challenge: https://roadmap.sh/projects/task-tracker
 
 ## Installation
 
+Before installation you MUST(!) install Golang compiler
+
 ```bash
 # Clone the repository
 git clone https://github.com/izya4ka/notes-cli.git
