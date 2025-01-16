@@ -19,10 +19,10 @@ Before installation you MUST(!) install Golang compiler
 
 ```bash
 # Clone the repository
-git clone https://github.com/izya4ka/notes-cli.git
+$ git clone https://github.com/izya4ka/notes-cli.git
 
 # Navigate to the project directory
-cd notes-cli
+$ cd notes-cli
 ```
 You have two ways of installing
 
@@ -31,20 +31,25 @@ You have two ways of installing
 ```bash
 
 # Build and install the application
-sudo make install
+$ sudo make install
 
 # Run the application
-notes-cli
+$ notes-cli
 ```
 
 ### Rootless
 
 ```bash
 # Build application
-go build
+$ go build
 
 # Run application
-./notes-cli
+$ ./notes-cli
+```
+
+### Uninstall
+```bash
+$ sudo make uninstall
 ```
 
 ## Usage
