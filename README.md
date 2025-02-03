@@ -39,6 +39,8 @@ $ notes-cli
 
 ### Rootless
 
+before rootless installation please change distination file in main.go (because can't create file in /etc directory without root priveleges)
+
 ```bash
 # Build application
 $ go build
